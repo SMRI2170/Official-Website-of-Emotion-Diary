@@ -58,25 +58,24 @@
         .horizontal-track {
             display: flex;
             align-items: center;
-            /* Padding to center the first and last items. (Viewport width / 2) - (item width / 2) */
             padding: 0 calc(50vw - 150px); 
             width: max-content;
         }
         .track-item {
             flex-shrink: 0;
-            padding: 0 4vw; /* Spacing between items */
+            padding: 0 4vw;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .phone-slide {
-            width: 200px; /* Fixed width for phones */
+            width: 200px;
             aspect-ratio: 320 / 650;
             position: relative;
             transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         }
         .text-block {
-            width: 300px; /* Fixed width for text blocks */
+            width: 300px;
         }
         .phone-mockup {
             position: absolute;
@@ -103,8 +102,10 @@
             background-color: #f5f5f7;
         }
         
-        .gsap-reveal-text > * {
-            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        /* Initial state for animations */
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(30px);
         }
     </style>
 </head>
@@ -136,15 +137,11 @@
         <section class="py-24 md:py-40 relative hero-background overflow-hidden">
             <div class="container mx-auto px-6 text-center">
                 <div class="max-w-4xl mx-auto">
-                    <div class="gsap-reveal-text">
-                        <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight">Chart the map <br class="md:hidden"> of your mind.</h2>
-                    </div>
-                    <div class="gsap-reveal-text">
-                        <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-                            Emotion Diary helps you understand your feelings through simple, beautiful journaling. Recognize your patterns and cultivate a more mindful life.
-                        </p>
-                    </div>
-                    <div class="mt-10 opacity-0" id="hero-button">
+                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight gsap-reveal">Chart the map <br class="md:hidden"> of your mind.</h2>
+                    <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto gsap-reveal">
+                        Emotion Diary helps you understand your feelings through simple, beautiful journaling. Recognize your patterns and cultivate a more mindful life.
+                    </p>
+                    <div class="mt-10 gsap-reveal">
                         <a href="#download" class="bg-primary-gradient text-white px-10 py-4 rounded-full text-lg font-bold hover:opacity-90 transition-transform transform hover:scale-105 shadow-xl inline-block">
                             Download for Free
                         </a>
@@ -157,18 +154,16 @@
         <section id="horizontal-scroll-section" class="h-[300vh] relative">
             <div class="sticky top-0 h-screen w-full flex flex-col justify-center">
                 <div class="w-full max-w-4xl mx-auto text-center px-6 mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold">Make it yours. In every way.</h2>
-                    <p class="text-gray-400 mt-4 text-lg">From soothing themes to your native language, personalize your diary to feel like home.</p>
+                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">Make it yours. In every way.</h2>
+                    <p class="text-gray-400 mt-4 text-lg gsap-reveal">From soothing themes to your native language, personalize your diary to feel like home.</p>
                 </div>
                 <div class="horizontal-track">
-                    <!-- Text Block 1 -->
                     <div class="track-item">
                         <div class="text-block">
                             <h3 class="text-2xl font-semibold">Find your color.</h3>
                             <p class="text-gray-400 mt-2">Choose from a variety of beautiful themes to match your mood and personality.</p>
                         </div>
                     </div>
-                    <!-- Theme Phones -->
                     <div class="track-item">
                         <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F0F4F0/609966?text=Serene" alt="Serene Theme"></div></div></div>
                     </div>
@@ -184,14 +179,12 @@
                     <div class="track-item">
                         <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F5F3FF/C084FC?text=Lavender" alt="Lavender Theme"></div></div></div>
                     </div>
-                    <!-- Text Block 2 -->
                     <div class="track-item">
                         <div class="text-block">
                             <h3 class="text-2xl font-semibold">Speaks your language.</h3>
                             <p class="text-gray-400 mt-2">The app is designed to be accessible to everyone, supporting multiple languages.</p>
                         </div>
                     </div>
-                    <!-- Language Phones -->
                     <div class="track-item">
                         <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F5F5F7/1d1d1f?text=How+are+you?" alt="English Language"></div></div></div>
                     </div>
@@ -209,12 +202,8 @@
         <section id="details" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-20">
-                    <div class="gsap-reveal-text">
-                       <h2 class="text-4xl md:text-5xl font-bold">Designed for focus. <br>Crafted for clarity.</h2>
-                    </div>
-                     <div class="gsap-reveal-text">
-                        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Every feature is built to enhance your self-reflection journey, not complicate it.</p>
-                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">Designed for focus. <br>Crafted for clarity.</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto gsap-reveal">Every feature is built to enhance your self-reflection journey, not complicate it.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-24 items-center">
@@ -247,8 +236,8 @@
         <section id="gallery" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <div class="gsap-reveal-text"><h2 class="text-4xl md:text-5xl font-bold">A design that brings you peace.</h2></div>
-                    <div class="gsap-reveal-text"><p class="text-gray-600 mt-4 max-w-2xl mx-auto">An intuitive and beautiful interface makes your journaling experience even more rewarding.</p></div>
+                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">A design that brings you peace.</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto gsap-reveal">An intuitive and beautiful interface makes your journaling experience even more rewarding.</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     <div class="gsap-gallery-item">
@@ -270,14 +259,14 @@
         <!-- Download Section -->
         <section id="download" class="py-24">
             <div class="container mx-auto px-6 text-center">
-                <div class="gsap-reveal-text"><h2 class="text-4xl md:text-5xl font-bold">Begin your journey of <br>self-discovery today.</h2></div>
-                <div class="gsap-reveal-text"><p class="text-gray-600 mt-6 max-w-2xl mx-auto">Emotion Diary is free to download. Start a new habit of connecting with your feelings.</p></div>
-                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6 opacity-0" id="download-buttons">
-                    <a href="https://apps.apple.com/jp/app/idXXXXXXXXX" target="_blank" class="inline-block">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-14">
+                <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">Begin your journey of <br>self-discovery today.</h2>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto gsap-reveal">Emotion Diary is free to download. Start a new habit of connecting with your feelings.</p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6 gsap-reveal">
+                    <a href="https://apps.apple.com/jp/app/idXXXXXXXXX" target="_blank" class="inline-block h-14">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-full w-auto">
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.example.yourapp" target="_blank" class="inline-block">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png" alt="Get it on Google Play" class="h-20">
+                    <a href="https://play.google.com/store/apps/details?id=com.example.yourapp" target="_blank" class="inline-block h-14">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="h-full w-auto object-contain">
                     </a>
                 </div>
             </div>
@@ -318,28 +307,31 @@
         document.addEventListener('DOMContentLoaded', function() {
             gsap.registerPlugin(ScrollTrigger);
 
+            // --- General Reveal Animation ---
+            gsap.utils.toArray('.gsap-reveal').forEach(el => {
+                gsap.fromTo(el, 
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.2,
+                        ease: 'power4.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 90%',
+                            toggleActions: 'play none none none',
+                        }
+                    }
+                );
+            });
+
             // --- Hero Section Animations ---
             gsap.fromTo('.hero-background::before', 
                 { opacity: 0, scale: 0.8 }, 
                 { opacity: 1, scale: 1, duration: 1.5, ease: 'power3.out' }
             );
-
-            const heroTexts = gsap.utils.toArray('.gsap-reveal-text');
-            heroTexts.forEach((text, i) => {
-                const child = text.children[0];
-                gsap.fromTo(child, 
-                    { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)', y: 30 },
-                    { 
-                        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)', 
-                        y: 0,
-                        duration: 1.2, 
-                        ease: 'power4.out',
-                        delay: 0.5 + (i * 0.2)
-                    }
-                );
-            });
-            gsap.to('#hero-button', { opacity: 1, duration: 1, delay: 1.2 });
-
+            gsap.from('.gsap-reveal', { delay: 0.5, stagger: 0.2 });
+            
             // --- Horizontal Scroll Animation ---
             const track = document.querySelector('.horizontal-track');
             const items = gsap.utils.toArray('.track-item');
@@ -369,45 +361,40 @@
 
             // --- Detailed Features Animation ---
             gsap.utils.toArray('.gsap-feature').forEach(el => {
-                gsap.from(el, {
-                    opacity: 0,
-                    y: 60,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: el,
-                        start: 'top 85%',
-                        toggleActions: 'play none none none',
+                gsap.fromTo(el,
+                    { opacity: 0, y: 60 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.2,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none',
+                        }
                     }
-                });
+                );
             });
 
             // --- Gallery Animation ---
             gsap.utils.toArray('.gsap-gallery-item').forEach((item, i) => {
-                gsap.from(item, {
-                    opacity: 0,
-                    scale: 0.9,
-                    y: 50,
-                    duration: 1,
-                    ease: 'power3.out',
-                    delay: i * 0.1,
-                    scrollTrigger: {
-                        trigger: item.parentElement,
-                        start: 'top 80%',
-                        toggleActions: 'play none none none',
+                 gsap.fromTo(item,
+                    { opacity: 0, scale: 0.9, y: 50 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: 'power3.out',
+                        delay: i * 0.1,
+                        scrollTrigger: {
+                            trigger: item.parentElement,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none',
+                        }
                     }
-                });
-            });
-            
-            // --- Download Buttons Animation ---
-            gsap.from('#download-buttons', {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: '#download-buttons',
-                    start: 'top 90%',
-                }
+                );
             });
 
             // Footer year
