@@ -32,15 +32,13 @@
         }
 
         /* --- Interactive Feature Section Styles --- */
-        #features {
+        #interactive-features {
             background-color: #000;
             color: #f5f5f7;
         }
         .phone-container {
             width: 90%;
             max-width: 320px;
-            /* iPhone 14 Pro aspect ratio: 147.5mm / 71.5mm ≈ 2.06 */
-            /* Mockup aspect ratio: 650 / 320 */
             aspect-ratio: 320 / 650; 
             position: relative;
         }
@@ -112,8 +110,8 @@
                 <h1 class="text-2xl font-bold text-primary">Emotion Diary</h1>
             </a>
             <nav class="hidden md:flex space-x-8">
-                <a href="#features" class="text-gray-600 hover:text-primary transition">機能紹介</a>
-                <a href="#gallery" class="text-gray-600 hover:text-primary transition">ギャラリー</a>
+                <a href="#features" class="text-gray-600 hover:text-primary transition">機能</a>
+                <a href="#gallery" class="text-gray-600 hover:text-primary transition">デザイン</a>
                 <a href="#download" class="text-gray-600 hover:text-primary transition">ダウンロード</a>
             </nav>
             <a href="#download" class="hidden md:block bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-opacity-90 transition shadow-md">
@@ -142,7 +140,7 @@
         </section>
 
         <!-- Interactive Features Section -->
-        <section id="features" class="relative">
+        <section id="interactive-features" class="relative">
             <div id="interactive-pin-container" class="h-[500vh]">
                 <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center">
                     <!-- Feature Descriptions Area -->
@@ -182,6 +180,59 @@
                 </div>
             </div>
         </section>
+
+        <!-- New Features Section -->
+        <section id="features" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">あなたの一日に、<br class="md:hidden">静かな彩りを。</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto gsap-reveal">心を豊かにする機能が、シンプルで美しいデザインに詰まっています。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
+                    <!-- Feature 1 -->
+                    <div class="gsap-reveal">
+                        <img src="https://placehold.co/600x400/F5F5F7/cccccc?text=ミニマルな記録画面" alt="ミニマルな記録画面" class="rounded-3xl shadow-lg w-full">
+                        <div class="mt-6 flex items-center gap-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            <h3 class="text-2xl font-bold">感情を、美しく記録</h3>
+                        </div>
+                        <p class="mt-2 text-gray-600">今日の気分に合うアイコンをタップするだけ。ミニマルなデザインが、あなたの思考を邪魔することなく、素直な気持ちの記録をサポートします。</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="gsap-reveal">
+                        <img src="https://placehold.co/600x400/F5F5F7/cccccc?text=カレンダーとグラフの融合" alt="カレンダーとグラフ" class="rounded-3xl shadow-lg w-full">
+                         <div class="mt-6 flex items-center gap-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                            <h3 class="text-2xl font-bold">心の動きを可視化</h3>
+                        </div>
+                        <p class="mt-2 text-gray-600">色鮮やかなカレンダーと直感的なグラフで、あなたの感情のパターンを明らかに。自分でも気づかなかった心の波を発見する旅に出ましょう。</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="gsap-reveal">
+                        <img src="https://placehold.co/600x400/F5F5F7/cccccc?text=心地よいテーマ選択" alt="テーマ選択画面" class="rounded-3xl shadow-lg w-full">
+                         <div class="mt-6 flex items-center gap-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                            <h3 class="text-2xl font-bold">あなただけの空間</h3>
+                        </div>
+                        <p class="mt-2 text-gray-600">気分に合わせて選べる、心安らぐテーマカラー。あなただけの日記空間を、もっと心地よく、もっとパーソナルに彩ります。</p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="gsap-reveal">
+                        <img src="https://placehold.co/600x400/F5F5F7/cccccc?text=PINロック画面" alt="PINロック画面" class="rounded-3xl shadow-lg w-full">
+                        <div class="mt-6 flex items-center gap-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                            <h3 class="text-2xl font-bold">プライバシー第一</h3>
+                        </div>
+                        <p class="mt-2 text-gray-600">あなたの記録は、あなただけのもの。PINコードとオフライン保存で、大切な心の記録を誰にも見られることなく安全に守ります。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Gallery Section -->
         <section id="gallery" class="py-24 bg-white">
@@ -239,8 +290,8 @@
                 <div>
                     <h3 class="font-bold text-lg">リンク</h3>
                     <ul class="mt-2 space-y-2 text-sm">
-                        <li><a href="#features" class="text-gray-400 hover:text-white">機能紹介</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white">ギャラリー</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white">機能</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white">デザイン</a></li>
                         <li><a href="#download" class="text-gray-400 hover:text-white">ダウンロード</a></li>
                     </ul>
                 </div>
@@ -288,29 +339,25 @@
                     pin: true,
                     scrub: 1,
                     start: "top top",
-                    end: `+=${numSlides * 100}%`, // Each "slide" gets 100% of viewport height for scrolling
+                    end: `+=${numSlides * 100}%`,
                 }
             });
 
-            // Animate slides
             tl.to(slidesContainer, {
                 xPercent: -100 * (numSlides - 1),
                 ease: "none"
             });
 
-            // Animate descriptions
             featureDescriptions.forEach((desc, i) => {
-                // Fade in
                 tl.fromTo(desc, 
                     { opacity: 0, y: 30 }, 
                     { opacity: 1, y: 0, ease: 'power2.inOut' },
-                    i / numSlides // Start time
+                    i / numSlides
                 );
-                // Fade out
                 if (i < numSlides - 1) {
                     tl.to(desc, 
                         { opacity: 0, y: -30, ease: 'power2.inOut' },
-                        (i + 0.9) / numSlides // End time
+                        (i + 0.9) / numSlides
                     );
                 }
             });
