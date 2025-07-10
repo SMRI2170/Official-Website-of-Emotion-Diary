@@ -14,33 +14,35 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <!-- GSAP Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- Custom Styles -->
     <style>
         body {
             font-family: 'M PLUS Rounded 1c', sans-serif;
-            background-color: #F0F4F0;
-            color: #424242;
+            background-color: #F5F5F7; /* Apple-like light gray */
+            color: #1d1d1f; /* Apple-like dark gray */
         }
         .bg-primary { background-color: #609966; }
         .text-primary { color: #609966; }
-        .border-primary { border-color: #609966; }
         
         html {
             scroll-behavior: smooth;
         }
 
         /* --- Interactive Feature Section Styles --- */
-        #interactive-pin-container {
-            height: 400vh;
-            position: relative;
+        #features {
+            background-color: #000;
+            color: #f5f5f7;
         }
         .phone-container {
+            width: 90%;
+            max-width: 320px;
+            /* iPhone 14 Pro aspect ratio: 147.5mm / 71.5mm ≈ 2.06 */
+            /* Mockup aspect ratio: 650 / 320 */
+            aspect-ratio: 320 / 650; 
             position: relative;
-            width: 320px; /* iPhone 14 Pro width: 71.5mm -> ~320px for display */
-            height: 650px; /* iPhone 14 Pro height: 147.5mm -> ~650px for display */
         }
         .phone-mockup {
             position: absolute;
@@ -51,7 +53,7 @@
             background: #1c1c1c;
             border-radius: 50px;
             border: 12px solid #1c1c1c;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             z-index: 10;
         }
         .phone-screen {
@@ -79,19 +81,18 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        .feature-description-wrapper {
-            width: 100%;
-            max-width: 350px;
+            background-color: #f5f5f7;
         }
         .feature-description {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            will-change: opacity, transform;
         }
-        .feature-description.active {
-            opacity: 1;
-        }
+
         /* --- General Animation Styles --- */
         .gsap-reveal {
             opacity: 0;
@@ -104,18 +105,18 @@
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
+            <a href="index.html" class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 7a1 1 0 100 2h6a1 1 0 100-2H7zM7 11a1 1 0 100 2h3a1 1 0 100-2H7z" clip-rule="evenodd" />
                 </svg>
                 <h1 class="text-2xl font-bold text-primary">Emotion Diary</h1>
-            </div>
+            </a>
             <nav class="hidden md:flex space-x-8">
-                <a href="/#features" class="text-gray-600 hover:text-primary transition">機能紹介</a>
-                <a href="/#gallery" class="text-gray-600 hover:text-primary transition">ギャラリー</a>
-                <a href="/#download" class="text-gray-600 hover:text-primary transition">ダウンロード</a>
+                <a href="#features" class="text-gray-600 hover:text-primary transition">機能紹介</a>
+                <a href="#gallery" class="text-gray-600 hover:text-primary transition">ギャラリー</a>
+                <a href="#download" class="text-gray-600 hover:text-primary transition">ダウンロード</a>
             </nav>
-            <a href="/#download" class="hidden md:block bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-opacity-90 transition shadow-md">
+            <a href="#download" class="hidden md:block bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-opacity-90 transition shadow-md">
                 今すぐ入手
             </a>
         </div>
@@ -124,12 +125,11 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="py-20 md:py-32">
+        <section class="py-24 md:py-40">
             <div class="container mx-auto px-6 text-center">
-                <div class="max-w-3xl mx-auto">
-                    <span class="text-primary font-semibold gsap-reveal">あなたの心を、もっと身近に。</span>
-                    <h2 class="text-4xl md:text-6xl font-extrabold text-gray-800 mt-2 gsap-reveal">感情を記録し、自分と向き合う。</h2>
-                    <p class="mt-6 text-lg text-gray-600 gsap-reveal">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-5xl md:text-7xl font-bold tracking-tight gsap-reveal">感情を記録し、<br class="md:hidden">自分と向き合う。</h2>
+                    <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto gsap-reveal">
                         Emotion Diaryは、日々の気持ちを簡単に記録し、心の動きを可視化できる日記アプリです。あなたの感情の波を理解し、穏やかな毎日を送るためのお手伝いをします。
                     </p>
                     <div class="mt-10 gsap-reveal">
@@ -142,40 +142,39 @@
         </section>
 
         <!-- Interactive Features Section -->
-        <section id="features" class="pb-20">
-            <div id="interactive-pin-container">
-                <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-                    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-24 px-4">
-                        <!-- Feature Descriptions -->
-                        <div class="feature-description-wrapper text-center lg:text-left relative h-48 lg:h-auto order-2 lg:order-1">
-                            <div id="feature-desc-1" class="feature-description active">
-                                <h3 class="text-3xl font-bold text-gray-800">かんたん感情記録</h3>
-                                <p class="mt-4 text-gray-600">豊富なアイコンから今の気持ちを選ぶだけ。その日の出来事や考えも自由に書き留められます。</p>
+        <section id="features" class="relative">
+            <div id="interactive-pin-container" class="h-[500vh]">
+                <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center">
+                    <!-- Feature Descriptions Area -->
+                    <div class="w-full max-w-2xl text-center px-4 h-48 flex items-center">
+                        <div class="relative w-full h-full">
+                            <div class="feature-description">
+                                <h3 class="text-3xl md:text-5xl font-bold">かんたん感情記録</h3>
+                                <p class="mt-4 text-gray-400 max-w-md mx-auto">豊富なアイコンから今の気持ちを選ぶだけ。その日の出来事や考えも自由に書き留められます。</p>
                             </div>
-                            <div id="feature-desc-2" class="feature-description">
-                                <h3 class="text-3xl font-bold text-gray-800">感情カレンダー</h3>
-                                <p class="mt-4 text-gray-600">記録した感情がカレンダーに色付けされ、一目で心の移り変わりを振り返ることができます。</p>
+                            <div class="feature-description">
+                                <h3 class="text-3xl md:text-5xl font-bold">感情カレンダー</h3>
+                                <p class="mt-4 text-gray-400 max-w-md mx-auto">記録した感情がカレンダーに色付けされ、一目で心の移り変わりを振り返ることができます。</p>
                             </div>
-                            <div id="feature-desc-3" class="feature-description">
-                                <h3 class="text-3xl font-bold text-gray-800">グラフで分析</h3>
-                                <p class="mt-4 text-gray-600">感情の傾向や曜日ごとのパターンをグラフで可視化。自分でも知らなかった心の癖を発見できます。</p>
+                            <div class="feature-description">
+                                <h3 class="text-3xl md:text-5xl font-bold">グラフで分析</h3>
+                                <p class="mt-4 text-gray-400 max-w-md mx-auto">感情の傾向や曜日ごとのパターンをグラフで可視化。自分でも知らなかった心の癖を発見できます。</p>
                             </div>
-                            <div id="feature-desc-4" class="feature-description">
-                                <h3 class="text-3xl font-bold text-gray-800">プライバシー保護</h3>
-                                <p class="mt-4 text-gray-600">PINコードによるロック機能であなたの日記を保護。データは全て端末内に保存され安心です。</p>
+                            <div class="feature-description">
+                                <h3 class="text-3xl md:text-5xl font-bold">プライバシー保護</h3>
+                                <p class="mt-4 text-gray-400 max-w-md mx-auto">PINコードによるロック機能であなたの日記を保護。データは全て端末内に保存され安心です。</p>
                             </div>
                         </div>
-
-                        <!-- Phone Mockup -->
-                        <div class="phone-container order-1 lg:order-2">
-                            <div class="phone-mockup">
-                                <div class="phone-screen">
-                                    <div class="slides-container">
-                                        <div class="slide"><img src="https://placehold.co/320x650/F0F4F0/609966?text=ホーム画面" alt="感情記録画面"></div>
-                                        <div class="slide"><img src="https://placehold.co/320x650/E0F2F1/00897B?text=カレンダー画面" alt="感情カレンダー画面"></div>
-                                        <div class="slide"><img src="https://placehold.co/320x650/E3F2FD/1E88E5?text=分析画面" alt="分析グラフ画面"></div>
-                                        <div class="slide"><img src="https://placehold.co/320x650/F3E5F5/8E24AA?text=設定画面" alt="テーマ設定画面"></div>
-                                    </div>
+                    </div>
+                    <!-- Phone Mockup Area -->
+                    <div class="phone-container mt-8">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="slides-container">
+                                    <div class="slide"><img src="https://placehold.co/320x650/F0F4F0/609966?text=ホーム画面" alt="感情記録画面"></div>
+                                    <div class="slide"><img src="https://placehold.co/320x650/E0F2F1/00897B?text=カレンダー画面" alt="感情カレンダー画面"></div>
+                                    <div class="slide"><img src="https://placehold.co/320x650/E3F2FD/1E88E5?text=分析画面" alt="分析グラフ画面"></div>
+                                    <div class="slide"><img src="https://placehold.co/320x650/F3E5F5/8E24AA?text=設定画面" alt="テーマ設定画面"></div>
                                 </div>
                             </div>
                         </div>
@@ -185,44 +184,42 @@
         </section>
 
         <!-- Gallery Section -->
-        <section id="gallery" class="py-20 bg-white">
+        <section id="gallery" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800 gsap-reveal">心安らぐデザイン</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">心安らぐデザイン</h2>
                     <p class="text-gray-600 mt-4 max-w-2xl mx-auto gsap-reveal">直感的で美しいインターフェースが、あなたの日記体験をより豊かなものにします。</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="gsap-reveal">
-                        <img src="https://placehold.co/300x600/F0F4F0/609966?text=感情カレンダー画面" alt="感情カレンダー画面のスクリーンショット" class="rounded-2xl shadow-lg w-full h-full object-cover">
-                        <p class="text-center mt-2 font-semibold text-gray-700">感情カレンダー</p>
+                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=感情カレンダー画面" alt="感情カレンダー画面のスクリーンショット" class="rounded-3xl shadow-lg w-full h-full object-cover">
+                        <p class="text-center mt-4 font-semibold text-gray-700">感情カレンダー</p>
                     </div>
                     <div class="gsap-reveal">
-                        <img src="https://placehold.co/300x600/F0F4F0/609966?text=分析グラフ画面" alt="分析グラフ画面のスクリーンショット" class="rounded-2xl shadow-lg w-full h-full object-cover">
-                        <p class="text-center mt-2 font-semibold text-gray-700">気分トレンド分析</p>
+                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=分析グラフ画面" alt="分析グラフ画面のスクリーンショット" class="rounded-3xl shadow-lg w-full h-full object-cover">
+                        <p class="text-center mt-4 font-semibold text-gray-700">気分トレンド分析</p>
                     </div>
                     <div class="gsap-reveal">
-                        <img src="https://placehold.co/300x600/F0F4F0/609966?text=チャレンジ画面" alt="チャレンジ画面のスクリーンショット" class="rounded-2xl shadow-lg w-full h-full object-cover">
-                        <p class="text-center mt-2 font-semibold text-gray-700">セルフケア・チャレンジ</p>
+                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=チャレンジ画面" alt="チャレンジ画面のスクリーンショット" class="rounded-3xl shadow-lg w-full h-full object-cover">
+                        <p class="text-center mt-4 font-semibold text-gray-700">セルフケア・チャレンジ</p>
                     </div>
                     <div class="gsap-reveal">
-                        <img src="https://placehold.co/300x600/F0F4F0/609966?text=テーマ選択画面" alt="テーマ選択画面のスクリーンショット" class="rounded-2xl shadow-lg w-full h-full object-cover">
-                        <p class="text-center mt-2 font-semibold text-gray-700">テーマ設定</p>
+                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=テーマ選択画面" alt="テーマ選択画面のスクリーンショット" class="rounded-3xl shadow-lg w-full h-full object-cover">
+                        <p class="text-center mt-4 font-semibold text-gray-700">テーマ設定</p>
                     </div>
                 </div>
             </div>
         </section>
         
         <!-- Download Section -->
-        <section id="download" class="py-20">
+        <section id="download" class="py-24">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-gray-800 gsap-reveal">今日から、心の旅を始めよう。</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto gsap-reveal">Emotion Diaryは無料です。下のボタンからダウンロードして、あなたの感情と向き合う新しい習慣をスタートしましょう。</p>
+                <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">今日から、心の旅を始めよう。</h2>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto gsap-reveal">Emotion Diaryは無料です。下のボタンからダウンロードして、あなたの感情と向き合う新しい習慣をスタートしましょう。</p>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6 gsap-reveal">
-                    <!-- iOS App Store Link -->
                     <a href="https://apps.apple.com/jp/app/idXXXXXXXXX" target="_blank" class="inline-block">
                         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-14">
                     </a>
-                    <!-- Google Play Store Link -->
                     <a href="https://play.google.com/store/apps/details?id=com.example.yourapp" target="_blank" class="inline-block">
                         <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png" alt="Google Playで手に入れよう" class="h-20">
                     </a>
@@ -242,9 +239,9 @@
                 <div>
                     <h3 class="font-bold text-lg">リンク</h3>
                     <ul class="mt-2 space-y-2 text-sm">
-                        <li><a href="/#features" class="text-gray-400 hover:text-white">機能紹介</a></li>
-                        <li><a href="/#gallery" class="text-gray-400 hover:text-white">ギャラリー</a></li>
-                        <li><a href="/#download" class="text-gray-400 hover:text-white">ダウンロード</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white">機能紹介</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white">ギャラリー</a></li>
+                        <li><a href="#download" class="text-gray-400 hover:text-white">ダウンロード</a></li>
                     </ul>
                 </div>
                 <div>
@@ -267,56 +264,56 @@
 
             // --- General Fade-in Animation ---
             gsap.utils.toArray('.gsap-reveal').forEach(el => {
-                gsap.fromTo(el, 
-                    { opacity: 0, y: 50 },
-                    { 
-                        opacity: 1, 
-                        y: 0,
-                        duration: 1,
-                        scrollTrigger: {
-                            trigger: el,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        },
-                        stagger: 0.2
+                gsap.from(el, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
                     }
-                );
+                });
             });
 
-            // --- Interactive Swipe Animation ---
-            const slides = gsap.utils.toArray(".slide");
-            const descriptions = gsap.utils.toArray(".feature-description");
-            
+            // --- Interactive Features Animation ---
+            const featureDescriptions = gsap.utils.toArray(".feature-description");
+            const slidesContainer = document.querySelector(".slides-container");
+            const numSlides = featureDescriptions.length;
+
             let tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#interactive-pin-container",
                     pin: true,
                     scrub: 1,
                     start: "top top",
-                    end: "+=4000",
+                    end: `+=${numSlides * 100}%`, // Each "slide" gets 100% of viewport height for scrolling
                 }
             });
 
-            tl.from(".phone-container", { scale: 0.8, autoAlpha: 0 })
-              .to(".feature-description-wrapper", { autoAlpha: 1 }, "<0.2")
-              .to(".slides-container", {
-                  xPercent: -100 * (slides.length - 1),
-                  ease: "none"
-              }, "<");
-
-            descriptions.forEach((desc, i) => {
-                if (i > 0) {
-                    const startTime = i / (slides.length - 1) - 0.1;
-                    const endTime = (i + 0.9) / (slides.length - 1);
-                    tl.to(descriptions[i-1], { opacity: 0, duration: 0.05 }, startTime);
-                    tl.to(descriptions[i], { opacity: 1, duration: 0.05 }, startTime);
-                    if (i === descriptions.length - 1) {
-                         tl.to(descriptions[i], { opacity: 0, duration: 0.05 }, endTime);
-                    }
-                }
+            // Animate slides
+            tl.to(slidesContainer, {
+                xPercent: -100 * (numSlides - 1),
+                ease: "none"
             });
 
-            tl.to(".phone-container", { scale: 0.8, autoAlpha: 0 }, ">");
+            // Animate descriptions
+            featureDescriptions.forEach((desc, i) => {
+                // Fade in
+                tl.fromTo(desc, 
+                    { opacity: 0, y: 30 }, 
+                    { opacity: 1, y: 0, ease: 'power2.inOut' },
+                    i / numSlides // Start time
+                );
+                // Fade out
+                if (i < numSlides - 1) {
+                    tl.to(desc, 
+                        { opacity: 0, y: -30, ease: 'power2.inOut' },
+                        (i + 0.9) / numSlides // End time
+                    );
+                }
+            });
 
             // Footer year
             document.getElementById('year').textContent = new Date().getFullYear();
