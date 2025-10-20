@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotion Diary - Chart the Map of Your Mind</title>
-    
-    <!-- Tailwind CSS -->
+    <title>感情日記 - あなただけの心の庭を育む</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-    <!-- GSAP Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Custom Styles -->
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F5F5F7;
-            color: #1d1d1f;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F9FAFB; /* bg-gray-50 */
+            color: #111827; /* bg-gray-900 */
             overscroll-behavior: none;
         }
-        .bg-primary { background-color: #609966; }
-        .text-primary { color: #609966; }
+        /* --- Gentle Green Color Palette --- */
+        .bg-primary { background-color: #10b981; } /* emerald-500 */
+        .text-primary { color: #10b981; }
         .bg-primary-gradient {
-             background-image: linear-gradient(to right, #609966, #84b88a);
+            background-image: linear-gradient(to right, #34d399, #10b981); /* emerald-400 to emerald-500 */
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
@@ -43,7 +40,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: radial-gradient(circle at 50% 30%, rgba(96, 153, 102, 0.1), transparent 50%);
+            background-image: radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.1), transparent 60%);
             opacity: 0;
             transform: scale(0.8);
             z-index: -1;
@@ -51,8 +48,8 @@
 
         /* --- Horizontal Scroll Section --- */
         #horizontal-scroll-section {
-            background-color: #000;
-            color: #f5f5f7;
+            background-color: #111827; /* bg-gray-900 */
+            color: #f9fafb; /* bg-gray-50 */
             overflow: hidden;
         }
         .horizontal-track {
@@ -101,7 +98,7 @@
             object-fit: cover;
             background-color: #f5f5f7;
         }
-        
+
         /* Initial state for animations */
         .gsap-reveal {
             opacity: 0;
@@ -111,194 +108,146 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 7a1 1 0 100 2h6a1 1 0 100-2H7zM7 11a1 1 0 100 2h3a1 1 0 100-2H7z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
                 </svg>
-                <h1 class="text-2xl font-bold text-primary">Emotion Diary</h1>
+                <h1 class="text-2xl font-bold text-primary">感情日記</h1>
             </a>
             <nav class="hidden md:flex space-x-8">
-                <a href="#details" class="text-gray-600 hover:text-primary transition">Features</a>
-                <a href="#gallery" class="text-gray-600 hover:text-primary transition">Design</a>
-                <a href="#download" class="text-gray-600 hover:text-primary transition">Download</a>
+                <a href="#concept" class="text-gray-600 hover:text-primary transition">コンセプト</a>
+                <a href="#download" class="text-gray-600 hover:text-primary transition">ダウンロード</a>
             </nav>
             <a href="#download" class="hidden md:block bg-primary-gradient text-white px-5 py-2 rounded-full font-bold hover:opacity-90 transition shadow-md">
-                Get App
+                アプリを入手
             </a>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section class="py-24 md:py-40 relative hero-background overflow-hidden">
-            <div class="container mx-auto px-6 text-center">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight gsap-reveal">Chart the map <br class="md:hidden"> of your mind.</h2>
-                    <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto gsap-reveal">
-                        Emotion Diary helps you understand your feelings through simple, beautiful journaling. Recognize your patterns and cultivate a more mindful life.
-                    </p>
-                    <div class="mt-10 gsap-reveal">
-                        <a href="#download" class="bg-primary-gradient text-white px-10 py-4 rounded-full text-lg font-bold hover:opacity-90 transition-transform transform hover:scale-105 shadow-xl inline-block">
-                            Download for Free
-                        </a>
+            <div class="container mx-auto px-6">
+                <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 lg:w-3/5 text-center md:text-left">
+                        <h2 class="text-5xl md:text-7xl font-black tracking-tight gsap-reveal">あなたの感情をもっと大切に、<br>もっと自分らしく。</h2>
+                        <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-xl mx-auto md:mx-0 gsap-reveal">
+                            SNS共有なし。完全ひとり専用。<br>
+                            自分の心と静かに向き合うための日記アプリです。
+                        </p>
+                        <div class="mt-10 gsap-reveal">
+                            <a href="#download" class="bg-primary-gradient text-white px-10 py-4 rounded-full text-lg font-bold hover:opacity-90 transition-transform transform hover:scale-105 shadow-xl inline-block">
+                                無料でダウンロード
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 lg:w-2/5 flex justify-center">
+                         <div class="relative w-[280px] aspect-[320/650] gsap-reveal">
+                            <div class="phone-mockup">
+                                <div class="phone-screen">
+                                    <img src="https://placehold.co/320x650/e2e8f0/94a3b8?text=Home" alt="感情日記 ホーム画面" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- New Horizontal Scroll Section -->
+        <section id="concept" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">誰かと比べない、<br>ありのままの感情を。</h2>
+                    <p class="mt-8 text-gray-600 text-lg leading-relaxed gsap-reveal">
+                        「感情日記」は、日々の出来事や心の動きをジャッジすることなく、<br class="hidden sm:block">
+                        ありのままに受け止めるための、<span class="font-bold text-primary">ひとり専用</span>の日記アプリです。<br><br>
+                        SNS共有や公開機能は一切なく、<br class="hidden sm:block">
+                        誰にも邪魔されない「自分だけの心の庭」を育みます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section id="horizontal-scroll-section" class="h-[300vh] relative">
             <div class="sticky top-0 h-screen w-full flex flex-col justify-center">
                 <div class="w-full max-w-4xl mx-auto text-center px-6 mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">Make it yours. In every way.</h2>
-                    <p class="text-gray-400 mt-4 text-lg gsap-reveal">From soothing themes to your native language, personalize your diary to feel like home.</p>
+                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">あなただけの心の記録を。</h2>
+                    <p class="text-gray-400 mt-4 text-lg gsap-reveal">シンプルなカレンダーや、日々の感情の移り変わりで、<br class="hidden sm:block">あなたの特別なダイアリーを作成できます。</p>
                 </div>
                 <div class="horizontal-track">
                     <div class="track-item">
                         <div class="text-block">
-                            <h3 class="text-2xl font-semibold">Find your color.</h3>
-                            <p class="text-gray-400 mt-2">Choose from a variety of beautiful themes to match your mood and personality.</p>
+                            <h3 class="text-2xl font-semibold">感情を彩る。</h3>
+                            <p class="text-gray-400 mt-2">その日の気分に合わせてカラーを設定。<br>自分の感情を客観的に見つめられます。</p>
                         </div>
                     </div>
                     <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F0F4F0/609966?text=Serene" alt="Serene Theme"></div></div></div>
+                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/e2e8f0/94a3b8?text=Calendar" alt="カレンダー画面"></div></div></div>
                     </div>
                     <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/FDF2F8/F472B6?text=Pink" alt="Pink Theme"></div></div></div>
+                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/e2e8f0/94a3b8?text=Timeline" alt="タイムライン画面"></div></div></div>
                     </div>
                     <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/EFF6FF/60A5FA?text=Blue" alt="Blue Theme"></div></div></div>
-                    </div>
-                    <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/FEFAE0/D4A373?text=Beige" alt="Beige Theme"></div></div></div>
-                    </div>
-                    <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F5F3FF/C084FC?text=Lavender" alt="Lavender Theme"></div></div></div>
+                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/e2e8f0/94a3b8?text=Stats" alt="感情の統計画面"></div></div></div>
                     </div>
                     <div class="track-item">
                         <div class="text-block">
-                            <h3 class="text-2xl font-semibold">Speaks your language.</h3>
-                            <p class="text-gray-400 mt-2">The app is designed to be accessible to everyone, supporting multiple languages.</p>
+                            <h3 class="text-2xl font-semibold">すべての記録を、美しく。</h3>
+                            <p class="text-gray-400 mt-2">カレンダー、タイムライン、感情の統計。<br>必要な情報を直感的に把握できます。</p>
                         </div>
-                    </div>
-                    <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F5F5F7/1d1d1f?text=How+are+you?" alt="English Language"></div></div></div>
-                    </div>
-                    <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F5F5F7/1d1d1f?text=今日の気分は？" alt="Japanese Language"></div></div></div>
                     </div>
                      <div class="track-item">
-                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/F5F5F7/1d1d1f?text=오늘+기분은?" alt="Korean Language"></div></div></div>
+                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/e2e8f0/94a3b8?text=Diary+Entry" alt="日記入力画面"></div></div></div>
+                    </div>
+                     <div class="track-item">
+                        <div class="phone-slide"><div class="phone-mockup"><div class="phone-screen"><img src="https://placehold.co/320x650/e2e8f0/94a3b8?text=Settings" alt="設定画面"></div></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Detailed Features Section -->
-        <section id="details" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">Designed for focus. <br>Crafted for clarity.</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto gsap-reveal">Every feature is built to enhance your self-reflection journey, not complicate it.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-24 items-center">
-                    <div class="gsap-feature">
-                        <div class="flex items-center gap-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                            <h3 class="text-2xl font-bold">Minimalist Logging</h3>
-                        </div>
-                        <p class="mt-2 text-gray-600">A clean interface helps you record your feelings without distraction, making journaling a peaceful ritual.</p>
-                    </div>
-                    <div class="gsap-feature">
-                        <img src="https://placehold.co/600x400/F5F5F7/cccccc?text=Minimalist+Logging+UI" alt="Minimalist Logging UI" class="rounded-3xl shadow-lg w-full">
-                    </div>
-
-                    <div class="gsap-feature md:order-last">
-                         <div class="flex items-center gap-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                            <h3 class="text-2xl font-bold">Visual Insights</h3>
-                        </div>
-                        <p class="mt-2 text-gray-600">Go beyond simple tracking. Our charts and calendar help you connect the dots and understand your emotional landscape.</p>
-                    </div>
-                    <div class="gsap-feature md:order-first">
-                        <img src="https://placehold.co/600x400/F5F5F7/cccccc?text=Visual+Insights" alt="Visual Insights Charts" class="rounded-3xl shadow-lg w-full">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">A design that brings you peace.</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto gsap-reveal">An intuitive and beautiful interface makes your journaling experience even more rewarding.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                    <div class="gsap-gallery-item">
-                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=Calendar+View" alt="Calendar View Screenshot" class="rounded-3xl shadow-lg w-full h-full object-cover">
-                    </div>
-                    <div class="gsap-gallery-item">
-                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=Analysis+Charts" alt="Analysis Charts Screenshot" class="rounded-3xl shadow-lg w-full h-full object-cover">
-                    </div>
-                    <div class="gsap-gallery-item">
-                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=Challenges+Screen" alt="Challenges Screen Screenshot" class="rounded-3xl shadow-lg w-full h-full object-cover">
-                    </div>
-                    <div class="gsap-gallery-item">
-                        <img src="https://placehold.co/300x600/F5F5F7/609966?text=Theme+Selection" alt="Theme Selection Screenshot" class="rounded-3xl shadow-lg w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Download Section -->
-        <section id="download" class="py-24">
+        <section id="download" class="py-24 bg-gray-50">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">Begin your journey of <br>self-discovery today.</h2>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto gsap-reveal">Emotion Diary is free to download. Start a new habit of connecting with your feelings.</p>
+                <h2 class="text-4xl md:text-5xl font-bold gsap-reveal">さあ、あなただけの<br>感情日記を始めよう。</h2>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto gsap-reveal">ダウンロードは無料。<br>心の毎日を、もっと色鮮やかに記録しませんか。</p>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6 gsap-reveal">
-                    <a href="https://apps.apple.com/jp/app/idXXXXXXXXX" target="_blank" class="inline-block h-14">
+                    <a href="#" target="_blank" class="inline-block h-14">
                         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-full w-auto">
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.example.yourapp" target="_blank" class="inline-block h-14">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="h-full w-auto object-contain">
+                    <a href="#" target="_blank" class="inline-block h-14">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png" alt="Get it on Google Play" class="h-full w-auto object-contain">
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300">
         <div class="container mx-auto px-6 py-10">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
-                <div>
-                    <h3 class="font-bold text-lg text-white">Emotion Diary</h3>
-                    <p class="mt-2 text-gray-400 text-sm">Chart the map of your mind.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center sm:text-left">
+                <div class="md:col-span-2">
+                    <h3 class="font-bold text-lg text-white">感情日記</h3>
+                    <p class="mt-2 text-gray-400 text-sm">あなたの心を、もっと豊かに。</p>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg text-white">Navigate</h3>
+                    <h3 class="font-bold text-lg text-white">ナビゲーション</h3>
                     <ul class="mt-2 space-y-2 text-sm">
-                        <li><a href="#details" class="text-gray-400 hover:text-white">Features</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white">Design</a></li>
-                        <li><a href="#download" class="text-gray-400 hover:text-white">Download</a></li>
+                        <li><a href="index.html#concept" class="text-gray-400 hover:text-white">コンセプト</a></li>
+                        <li><a href="index.html#download" class="text-gray-400 hover:text-white">ダウンロード</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg text-white">Legal</h3>
+                    <h3 class="font-bold text-lg text-white">リーガル</h3>
                     <ul class="mt-2 space-y-2 text-sm">
-                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li><a href="terms.html" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">プライバシーポリシー</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white">利用規約</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">お問い合わせ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-                <p>&copy; <span id="year"></span> Emotion Diary. All Rights Reserved.</p>
+                <p>&copy; <span id="year"></span> 感情日記. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -330,72 +279,34 @@
                 { opacity: 0, scale: 0.8 }, 
                 { opacity: 1, scale: 1, duration: 1.5, ease: 'power3.out' }
             );
-            gsap.from('.gsap-reveal', { delay: 0.5, stagger: 0.2 });
-            
+
             // --- Horizontal Scroll Animation ---
             const track = document.querySelector('.horizontal-track');
-            const items = gsap.utils.toArray('.track-item');
-            
-            gsap.to(track, {
-                x: () => -(track.scrollWidth - window.innerWidth),
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "#horizontal-scroll-section",
-                    pin: true,
-                    scrub: 1,
-                    end: () => "+=" + (track.scrollWidth - window.innerWidth),
-                    onUpdate: (self) => {
-                        items.forEach(item => {
-                            const phone = item.querySelector('.phone-slide');
-                            if (!phone) return;
-                            
-                            const rect = item.getBoundingClientRect();
-                            const dist = Math.abs(rect.left + rect.width / 2 - window.innerWidth / 2);
-                            const scale = gsap.utils.mapRange(0, window.innerWidth / 2, 1.1, 0.85, dist);
-                            const opacity = gsap.utils.mapRange(window.innerWidth / 4, window.innerWidth / 2, 1, 0.5, dist);
-                            gsap.to(phone, { scale: scale, opacity: opacity, duration: 0.3, ease: 'power2.out' });
-                        });
-                    }
-                }
-            });
+            if (track) {
+                const items = gsap.utils.toArray('.track-item');
+                gsap.to(track, {
+                    x: () => -(track.scrollWidth - window.innerWidth),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: "#horizontal-scroll-section",
+                        pin: true,
+                        scrub: 1,
+                        end: () => "+=" + (track.scrollWidth - window.innerWidth),
+                        onUpdate: (self) => {
+                            items.forEach(item => {
+                                const phone = item.querySelector('.phone-slide');
+                                if (!phone) return;
 
-            // --- Detailed Features Animation ---
-            gsap.utils.toArray('.gsap-feature').forEach(el => {
-                gsap.fromTo(el,
-                    { opacity: 0, y: 60 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1.2,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: el,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none',
+                                const rect = item.getBoundingClientRect();
+                                const dist = Math.abs(rect.left + rect.width / 2 - window.innerWidth / 2);
+                                const scale = gsap.utils.mapRange(0, window.innerWidth / 2, 1.1, 0.85, dist);
+                                const opacity = gsap.utils.mapRange(window.innerWidth / 4, window.innerWidth / 2, 1, 0.5, dist);
+                                gsap.to(phone, { scale: scale, opacity: opacity, duration: 0.3, ease: 'power2.out' });
+                            });
                         }
                     }
-                );
-            });
-
-            // --- Gallery Animation ---
-            gsap.utils.toArray('.gsap-gallery-item').forEach((item, i) => {
-                 gsap.fromTo(item,
-                    { opacity: 0, scale: 0.9, y: 50 },
-                    {
-                        opacity: 1,
-                        scale: 1,
-                        y: 0,
-                        duration: 1,
-                        ease: 'power3.out',
-                        delay: i * 0.1,
-                        scrollTrigger: {
-                            trigger: item.parentElement,
-                            start: 'top 80%',
-                            toggleActions: 'play none none none',
-                        }
-                    }
-                );
-            });
+                });
+            }
 
             // Footer year
             document.getElementById('year').textContent = new Date().getFullYear();
